@@ -1,0 +1,21 @@
+{
+    "name": "plexwrap",
+    "productName": "PlexWrap",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "sass:compile": "node-sass sass/ -o css/",
+        "pack:windows": "electron-packager . --icon='images/packages/windows.ico' --ignore='node_modules' --out=build",
+        "start": "npm run sass:compile && electron .",
+        "build": "npm run sass:compile && npm run pack:windows"
+    },
+    "author": "Oceanity",
+    "license": "MIT",
+    "devDependencies": {
+        "@electron/remote": "^1.0.0",
+        "electron": "^10.1.1",
+        "electron-packager": "^15.1.0",
+        "node-sass": "^4.14.1"
+    }
+}

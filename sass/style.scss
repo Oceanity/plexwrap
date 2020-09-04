@@ -1,0 +1,99 @@
+body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #1f1f1f;
+
+    &.maximized {
+        #max-btn {
+            background: no-repeat center/16px
+                url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsPSIjZmZmIj48cGF0aCBkPSJNMyA1djloOVY1SDN6bTggOEg0VjZoN3Y3eiIvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNSA1aDFWNGg3djdoLTF2MWgyVjNINXYyeiIvPjwvc3ZnPg==") !important;
+        }
+    }
+}
+
+#plex-wrap {
+    flex: 1;
+    background: no-repeat center/320px auto
+        url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzA4NiIgaGVpZ2h0PSIxMDAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxyYWRpYWxHcmFkaWVudCBjeD0iODkuMjY3JSIgY3k9IjQ5Ljc2JSIgZng9Ijg5LjI2NyUiIGZ5PSI0OS43NiUiIHI9IjkyLjUlIiBpZD0iYSI+PHN0b3Agc3RvcC1jb2xvcj0iI0Y5QkUwMyIgb2Zmc2V0PSIwJSIvPjxzdG9wIHN0b3AtY29sb3I9IiNDQzdDMTkiIG9mZnNldD0iMTAwJSIvPjwvcmFkaWFsR3JhZGllbnQ+PC9kZWZzPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTMwODUuOTkgMGgtMjkwbC0yOTAgNTAwIDI5MCA1MDBoMjg5Ljc0N0wyNzk1Ljk5IDUwMC4yNSAzMDg1Ljk5IDAiIGZpbGw9IiNGRkYiLz48cGF0aCBkPSJNMjE4NiAwaDI5MGwzMjAgNTAwLjI1LTMyMCA1MDAuMjVoLTI5MGwzMjAtNTAwLjI1TDIxODYgMCIgZmlsbD0idXJsKCNhKSIvPjxwYXRoIGQ9Ik0yMDg1Ljk0NyAxMDAwaC01NzcuMDczVjBoNTc3LjA3M3YxNzMuNzM3SDE3MjEuMzRWMzkzLjNoMzM5LjI1NHYxNzMuNzNIMTcyMS4zNHYyNTcuODY1aDM2NC42MDdWMTAwMG0tMTI5NC42NzEgMFYwaDIxMi4wNHY4MjQuODk1aDQwNS42MVYxMDAwaC02MTcuNjUiIGZpbGw9IiNGRkYiLz48ZyBmaWxsPSIjRkZGIj48cGF0aCBkPSJNNTg5Ljk0NyA1NTguODI0Yy02Ny4yNjggNTcuMDA3LTE2Mi45MSA4NS41LTI4Ni45MzggODUuNWgtOTAuOTdWMTAwMEgwVjQ3MC4zMzhsMjkwIC4zNmMxNzcuNTYzLTIuMDcgMTg2Ljg0Mi0xMTAuODIgMTg2Ljg0Mi0xNDguNDk4IDAtMzQuOTggMC0xNDYuNzU1LTE1Ny44NDItMTQ4LjVsLTMxOSAuMDAzVjBoMzE5LjQyNEM0NDAuNzE3IDAgNTMyLjk0IDI2LjEwNyA1OTYuMSA3OC4zMmM2My4xNTMgNTIuMjE0IDk0LjczNCAxMzAuMDcyIDk0LjczNCAyMzMuNTgyIDAgMTA3LjYyNS0zMy42MzIgMTg5LjkyOC0xMDAuODg3IDI0Ni45MjJ6Ii8+PHBhdGggZD0iTTAgMTEwaDIxMi4ydjQyOUgweiIvPjwvZz48L2c+PC9zdmc+");
+}
+
+#app-icon {
+    width: 16px;
+    height: 16px;
+    margin: 4px;
+}
+
+#title-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 0 0 24px;
+    height: 32px;
+    widows: 100%;
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    color: #999;
+    background: #1f2326;
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+
+    a {
+        display: inline-block;
+        margin: 0 4px;
+        color: #ccc;
+        text-decoration: none;
+        -webkit-app-region: no-drag;
+    }
+
+    #title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    #title-bar-btns {
+        display: flex;
+        justify-self: right;
+        -webkit-app-region: no-drag;
+        height: inherit;
+
+        #min-btn {
+            background: no-repeat center/16px
+                url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsPSIjZmZmIj48cGF0aCBkPSJNMTQgOHYxSDNWOGgxMXoiLz48L3N2Zz4=");
+        }
+
+        #max-btn {
+            background: no-repeat center/16px
+                url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsPSIjZmZmIj48cGF0aCBkPSJNMyAzdjEwaDEwVjNIM3ptOSA5SDRWNGg4djh6Ii8+PC9zdmc+");
+        }
+
+        #close-btn {
+            background: no-repeat center/16px
+                url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsPSIjZmZmIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTcuMTE2IDhsLTQuNTU4IDQuNTU4Ljg4NC44ODRMOCA4Ljg4NGw0LjU1OCA0LjU1OC44ODQtLjg4NEw4Ljg4NCA4bDQuNTU4LTQuNTU4LS44ODQtLjg4NEw4IDcuMTE2IDMuNDQyIDIuNTU4bC0uODg0Ljg4NEw3LjExNiA4eiIvPjwvc3ZnPg==");
+        }
+
+        button {
+            border: none;
+            border-radius: none;
+            outline: 0;
+            width: 46px;
+            height: inherit;
+            opacity: 0.7;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            &:active {
+                border: none;
+                border-radius: none;
+                background-color: rgba(255, 255, 255, 0.4);
+            }
+        }
+    }
+}
