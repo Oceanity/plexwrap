@@ -1,11 +1,8 @@
-const {
-    app,
-    BrowserWindow
-} = require("electron");
+const { app, BrowserWindow } = require("electron");
 
 function Init() {
     const win = new BrowserWindow({
-        icon: `${__dirname}/favicon.ico`,
+        icon: `${__dirname}/images/plex.ico`,
         frame: false,
         transparent: false,
         width: 1280,

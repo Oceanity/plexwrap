@@ -6,9 +6,8 @@
     "main": "main.js",
     "scripts": {
         "sass:compile": "node-sass sass/ -o css/",
-        "pack:windows": "electron-packager . --icon='images/packages/windows.ico' --ignore='node_modules' --out=build",
         "start": "npm run sass:compile && electron .",
-        "build": "npm run sass:compile && npm run pack:windows"
+        "build": "npm run sass:compile && electron-packager . --overwrite --icon='images/plex' --ignore='node_modules' --out=build"
     },
     "author": "Oceanity",
     "license": "MIT",
