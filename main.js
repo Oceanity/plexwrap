@@ -22,7 +22,7 @@ function Init() {
     win.loadFile("index.html");
 
     // Create Tray Menu
-    tray = new Tray(`${__dirname}/images/plex.ico`);
+    tray = new Tray(`${__dirname}/images/plex.png`);
 
     const contextMenu = new Menu();
     contextMenu.append(new MenuItem({
