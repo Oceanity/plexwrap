@@ -24,11 +24,19 @@ function Init() {
     // Create Tray Menu
     tray = new Tray(`${__dirname}/images/plex.ico`);
 
-    const contextMenu = Menu.buildFromTemplate([
-        { label: "Item1", type: "radio" },
-        { type: 'separator' },
-        { role: "quit", accelerator: "CmdOrCtrl+Q" }
-    ]);
+    const contextMenu = new Menu();
+    contextMenu.append(new MenuItem({
+        label: "Reload",
+        accelerator: "CmdOrCtrl+R",
+        click: function() {
+            win.reload();
+        } 
+    }));
+    contextMenu.append(new MenuItem({ type: "separator" }));
+    contextMenu.append(new MenuItem({
+        role: "quit",
+        accelerator: "CmdOrCtrl+Q" 
+    }));
 
     tray.setToolTip("PlexWrap");
     tray.setContextMenu(contextMenu);
@@ -38,6 +46,9 @@ function Init() {
     });
 
     // Set Shortcuts
+    globalShortcut.register("CmdOrCtrl+R",  () => {
+        win.reload();
+    });
     globalShortcut.register("CmdOrCtrl+Q",  () => {
         app.quit();
     });
