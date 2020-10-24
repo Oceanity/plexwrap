@@ -38,7 +38,7 @@
 
         closeBtn.addEventListener("click", (e) => {
             const window = remote.getCurrentWindow();
-            window.close();
+            window.hide();
         });
     }
 
