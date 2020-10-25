@@ -11,6 +11,8 @@ node_modules/
 
 # Compiled CSS
 css/
+*.css
+*.css.*
 
 # Built Project
 build/

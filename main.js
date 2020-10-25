@@ -1,14 +1,19 @@
 'use strict';
 
-const { app, BrowserWindow, globalShortcut, Menu, MenuItem, Tray } = require("electron");
+const { app, BrowserWindow, globalShortcut, Menu, MenuItem, Tray, shell } = require("electron");
 const isMac = process.platform === 'darwin';
 
-let tray = null;
+let win = null,
+    tray = null,
+    contextMenu = null,
+    showItem = null,
+    hideItem = null,
+    hidden = false;
 
 function Init() {
     // Create Window
-    const win = new BrowserWindow({
-        icon: `${__dirname}/images/plex.ico`,
+    win = new BrowserWindow({
+        icon: `${__dirname}/images/plexwrap.ico`,
         frame: false,
         transparent: false,
         width: 1280,
@@ -20,38 +25,86 @@ function Init() {
         },
     });
     win.loadFile("index.html");
+    win.webContents.on('new-window', function(e, url) {
+        e.preventDefault();
+        require('electron').shell.openExternal(url);
+    });
+
+    // Events
+    win.on("hide", () => { hidden = true; });
+    win.on("show", () => { hidden = false; });
 
     // Create Tray Menu
-    tray = new Tray(`${__dirname}/images/plex.png`);
+    tray = new Tray(`${__dirname}/images/${ isMac ? "tray-square-mac.png" : "tray-square.png"}`);
 
-    const contextMenu = new Menu();
+    contextMenu = new Menu();
+    contextMenu.append(new MenuItem({
+        label: "Plex Wrap",
+        icon: `${__dirname}/images/github.png`,
+        click: () => {
+            shell.openExternal("https://github.com/oceanity/plexwrap");
+        }
+    }));
+    contextMenu.append(new MenuItem({
+        label: "by @Oceanity",
+        icon: `${__dirname}/images/twitter.png`,
+        click: () => {
+            shell.openExternal("https://twitter.com/oceanity");
+        }
+    }));
+    contextMenu.append(new MenuItem({ type: "separator" }));
     contextMenu.append(new MenuItem({
         label: "Reload",
-        accelerator: "CmdOrCtrl+R",
-        click: function() {
+        accelerator: "CommandOrControl+R",
+        click: () => {
             win.reload();
         } 
     }));
     contextMenu.append(new MenuItem({ type: "separator" }));
     contextMenu.append(new MenuItem({
-        role: "quit",
-        accelerator: "CmdOrCtrl+Q" 
+        label: "Quit Plex Wrap",
+        role: "quit"
     }));
 
     tray.setToolTip("PlexWrap");
     tray.setContextMenu(contextMenu);
 
-    tray.on("click", function() {
-        win.show();
-    });
+    tray.on("click", TrayClick);
 
-    // Set Shortcuts
-    globalShortcut.register("CmdOrCtrl+R",  () => {
-        win.reload();
+    // Register Global Shortcuts
+    globalShortcut.register("VolumeUp", () => {
+        console.log("[Volume Up]");
     });
-    globalShortcut.register("CmdOrCtrl+Q",  () => {
-        app.quit();
+    globalShortcut.register("VolumeDown", () => {
+        console.log("[Volume Down]");
     });
+    globalShortcut.register("VolumeMute", () => {
+        console.log("[Volume Mute]");
+    });
+    globalShortcut.register("MediaStop", () => {
+        console.log("[Stop]");
+    });
+    globalShortcut.register("MediaPlayPause", () => {
+        console.log("[Play/Pause]");
+    });
+    globalShortcut.register("MediaNextTrack", () => {
+        console.log("[Next Track]");
+    });
+    globalShortcut.register("MediaPreviousTrack", () => {
+        console.log("[Previous Track]");
+    });
+}
+
+// Tray Click
+function TrayClick() {
+    if (!isMac) {
+        if (hidden) {
+            win.show();
+        }
+        if (!win.isFocused()) {
+            win.focus();
+        }
+    }
 }
 
 app.whenReady().then(Init);
